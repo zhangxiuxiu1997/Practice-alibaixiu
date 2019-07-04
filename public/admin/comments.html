@@ -93,15 +93,15 @@
         <td>{{$value.author.nickName}}</td>
         <td>{{$value.content}}</td>
         <td>《{{$value.post.title}}》</td>
-        <td>{{$value.createAt}}</td>
+        <td>{{$imports.dateFormat($value.createAt)}}</td>
         <td>{{$value.state==1?'批准':'未批准'}}</td>
         <td class="text-center">
           {{if $value.state==0}}
-          <a href="post-add.html" class="btn btn-info btn-xs">批准</a>
+          <a href="javascript:;" class="btn btn-info btn-xs" data-id="{{$value._id}}" id="approval">批准</a>
           {{else}}
-          <a href="post-add.html" class="btn btn-warning btn-xs" data-id="{{$value._id}}">驳回</a>
+          <a href="javascript:;" class="btn btn-warning btn-xs" data-id="{{$value._id}}" id="reject">驳回</a>
           {{/if}}
-          <a href="javascript:;" class="btn btn-danger btn-xs" data-id="{{$value._id}}">删除</a>
+          <a href="javascript:;" class="btn btn-danger btn-xs" data-id="{{$value._id}}" id="delete">删除</a>
         </td>
       </tr>
       {{/each}}
