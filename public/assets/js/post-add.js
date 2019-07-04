@@ -35,6 +35,7 @@ $('#feature').on('change', function () {
     contentType: false,
     success: function (result) {//成功的回调函数
       $('#featureHidden').val(result[0].feature);
+      $('.thumbnail').prop('src', result[0].feature).show();
     }
   })
 });
@@ -96,10 +97,10 @@ $('#modifyArticleBox').on('submit', '#postModify', function () {
   var formData = $(this).serialize();
   //发送ajax请求
   $.ajax({
-    type:'PUT',
-    url:'/posts/'+id,//请求的地址
-    data:formData,
-    success:function(result){//成功的回调函数
+    type: 'PUT',
+    url: '/posts/' + id,//请求的地址
+    data: formData,
+    success: function (result) {//成功的回调函数
       // console.log(result)
       location.href = 'posts.html';
     }
@@ -109,7 +110,7 @@ $('#modifyArticleBox').on('submit', '#postModify', function () {
 })
 
 //修改功能的文件上传
-$('#modifyArticleBox').on('change','#featureNew', function () {
+$('#modifyArticleBox').on('change', '#featureNew', function () {
   //创建一个表单对象  将文件的内容添加到 实例化对象中
   var formData = new FormData();
   formData.append('feature', this.files[0]);
@@ -123,6 +124,7 @@ $('#modifyArticleBox').on('change','#featureNew', function () {
     contentType: false,
     success: function (result) {//成功的回调函数
       $('#featureHidden').val(result[0].feature);
+      $('.thumbnail').prop('src', result[0].feature).show();
     }
   })
 });

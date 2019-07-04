@@ -1,3 +1,7 @@
+<script src='/login/status'></script>
+<script>
+  if (!isLogin) location.href = 'login.html';
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -150,18 +154,13 @@
         <div class="form-group">
           <label for="feature">文章封面</label>
           <!-- show when image chose -->
-          <img class="help-block thumbnail" style="display: none">
+          <img class="help-block thumbnail" src="{{data.thumbnail}}">
           <input id="featureNew" class="form-control" type="file">
           <input type="hidden" name="thumbnail" id="featureHidden" value="{{data.thumbnail}}">
         </div>
         <div class="form-group">
           <label for="category">所属分类</label>
           <select id="category" class="form-control" name="category">
-            {{if data.categories}}
-            123
-            {{else}}
-            456
-            {{/if}}
             {{each data.categories}}
             <option value="{{$value._id}}" {{ $value._id == data.category._id ? 'selected':''}}>{{$value.title}}</option>
             {{/each}}
@@ -190,6 +189,7 @@
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script src="../assets/vendors/art-template/template-web.js"></script>
   <script src="../assets/js/post-add.js"></script>
+  <script src="../assets/js/common.js"></script>
   <script>NProgress.done()</script>
 </body>
 
