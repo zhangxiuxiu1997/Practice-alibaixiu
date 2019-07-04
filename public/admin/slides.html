@@ -30,21 +30,22 @@
       </div> -->
       <div class="row">
         <div class="col-md-4">
-          <form>
+          <form id="slidesForm">
             <h2>添加新轮播内容</h2>
             <div class="form-group">
               <label for="image">图片</label>
               <!-- show when image chose -->
               <img class="help-block thumbnail" style="display: none">
-              <input class="form-control" type="file">
+              <input class="form-control" type="file" id="image">
+              <input type="hidden" name="image" id="imageHidden">
             </div>
             <div class="form-group">
               <label for="text">文本</label>
-              <input id="text" class="form-control" type="text" placeholder="文本">
+              <input id="text" class="form-control" type="text" placeholder="文本" name="title">
             </div>
             <div class="form-group">
               <label for="link">链接</label>
-              <input id="link" class="form-control" type="text" placeholder="链接">
+              <input id="link" class="form-control" type="text" placeholder="链接" name="link">
             </div>
             <div class="form-group">
               <button class="btn btn-primary" type="submit">添加</button>
@@ -61,23 +62,9 @@
                 <th class="text-center" width="100">操作</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td class="text-center"><img class="slide" src="../uploads/slide_1.jpg"></td>
-                <td>XIU功能演示</td>
-                <td>#</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center"><img class="slide" src="../uploads/slide_2.jpg"></td>
-                <td>XIU功能演示</td>
-                <td>#</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
+            <!-- 轮播图列表显示 -->
+            <tbody id="imageBox">
+
             </tbody>
           </table>
         </div>
@@ -121,9 +108,22 @@
       </li>
     </ul>
   </div>
-
+  <!-- 展示模板 -->
+  <script id="imageTpl" type="text/html">
+    {{each data}}
+    <tr>
+      <td class="text-center"><img class="slide" src="{{$value.image}}"></td>
+      <td>{{$value.title}}</td>
+      <td>{{$value.link ? $value.link :'#'}}</td>
+      <td class="text-center">
+        <a href="javascript:;" class="btn btn-danger btn-xs" data-id="{{$value._id}}" id="delete">删除</a>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
   <script src="../assets/vendors/jquery/jquery.js"></script>
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script src="../assets/vendors/art-template/template-web.js"></script>
   <script src="../assets/js/slides.js"></script>
   <script>NProgress.done()</script>
 </body>
