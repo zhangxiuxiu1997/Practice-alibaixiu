@@ -88,7 +88,6 @@ const validatePost = post => {
 		allowUnknown: true
 	});
 }
-
 // 导出模块成员
 module.exports = {
 	Post,

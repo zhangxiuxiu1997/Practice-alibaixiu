@@ -31,20 +31,18 @@
       <div class="widgets">
         <h4>搜索</h4>
         <div class="body search">
-          <form >
+          <form>
             <input type="text" class="keys" placeholder="输入关键字">
             <input type="submit" class="btn" value="搜索">
           </form>
         </div>
       </div>
-      <!-- 随机推荐 -->
       <div class="widgets">
         <h4>随机推荐</h4>
         <ul class="body random" id="randomArticleBox">
 
         </ul>
       </div>
-      <!-- 最新评论 -->
       <div class="widgets">
         <h4>最新评论</h4>
         <ul class="body discuz" id="newCommendBox">
@@ -53,19 +51,8 @@
       </div>
     </div>
     <div class="content">
-      <!-- 轮播图 -->
-      <div class="swipe" id="swipeBox">
+      <div class="panel new" id="searchBox">
 
-      </div>
-      <!-- 热门推荐 -->
-      <div class="panel hots">
-        <h3>热门推荐</h3>
-        <ul id="hotArticle">
-
-        </ul>
-      </div>
-      <!-- 最新发布的文章 -->
-      <div class="panel new" id="newArticleBox">
 
       </div>
     </div>
@@ -75,38 +62,14 @@
   </div>
   <script src="assets/vendors/jquery/jquery.js"></script>
   <script src="assets/vendors/nprogress/nprogress.js"></script>
-  <script src="assets/vendors/swipe/swipe.js"></script>
   <script src="./assets/vendors/art-template/template-web.js"></script>
   <script src="./assets/js/public.js"></script>
-  <script src="./assets/js/home.js"></script>
-  <!-- 轮播图模板 -->
-  <script id="swipeTpl" type="text/html">
-    <ul class="swipe-wrapper">
-      {{each data}}
-      <li >
-        <a href="/detail.html?id={{$value.link}}">
-          <img src="{{$value.image}}" style="height:460px">
-          <span>{{$value.title}}</span>
-        </a>
-      </li>
-      {{/each}}
-    </ul>
-    <p class="cursor">
-      {{each data}}
-      <!-- <span class="active"></span> -->
-      <span></span>
-      {{/each}}
-    </p>
-    <a href="javascript:;" class="arrow prev"><i class="fa fa-chevron-left"></i></a>
-    <a href="javascript:;" class="arrow next"><i class="fa fa-chevron-right"></i></a>
-  </script>
-  <!-- 最新文章模板 -->
-  <script id="newArticleTpl" type="text/html">
-      <h3>最新发布</h3>
+  <script src="./assets/js/search.js"></script>
+  <script id="searchTpl" type="text/html">
+    <h3>搜索结果</h3>
       {{each data}}
         <div class="entry">
           <div class="head">
-            <span class="sort">{{$value.category.title}}</span>
             <a href="detail.html?id={{$value._id}}">{{$value.title}}</a>
           </div>
           <div class="main">
@@ -120,17 +83,15 @@
                 <span>赞({{$value.meta.likes}})</span>
               </a>
               <a href="detail.html?id={{$value._id}}" class="tags">
-                分类：<span>{{$value.category.title}}</span>
+                  分类：<span>{{$value.category.title}}</span>
               </a>
             </p>
             <a href="detail.html?id={{$value._id}}" class="thumb">
-              <img src="{{$value.thumbnail}}" alt="">
-            </a>
+                <img src="{{$value.thumbnail}}" alt="">
+              </a>
           </div>
         </div>
       {{/each}}
   </script>
-  <script src="./assets/js/recommend.js"></script>
-  <script src="./assets/js/list.js"></script>
 </body>
 </html>
