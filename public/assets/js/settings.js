@@ -45,8 +45,8 @@ $.ajax({
     //网站图标的显示
     $('#headerImage').prop('src', result.logo);
     //是否开启评论
-    $('input[name=comment]').prop('check',result.comment);
+    $('input[name=comment]').prop('checked',result.comment);
     // 评论必须经人工批准
-    $('input[name=review]').prop('check', result.review);
+    $('input[name=review]').prop('checked', result.review);
   }
 })

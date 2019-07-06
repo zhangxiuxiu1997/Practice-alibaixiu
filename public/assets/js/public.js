@@ -53,7 +53,6 @@ $.ajax({
   type:'get',
   url:'/comments/lasted',//请求的地址
   success: function (result) {//成功的回调函数
-    console.log(result)
     var newCommendTpl = `
     {{each data}}
     <li>
@@ -102,7 +101,6 @@ $('.search form').on('submit', function () {
     type:'get',
     url:'/posts/search/'+key,//请求的地址
     success: function (result) {//成功的回调函数
-      console.log(result)
       location.href = '/search.html?key=' + key;
     }
   })
